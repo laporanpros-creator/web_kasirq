@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Kasir-Q - Solusi Kasir Digital Modern</title>
+    
+    <!-- Import Font Modern dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- KEYFRAMES (ANIMASI) --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatBtn {
+            0% { transform: translateY(0px); box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3); }
+            50% { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(255, 140, 0, 0.5); }
+            100% { transform: translateY(0px); box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3); }
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+        .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo span { color: #ff9800; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #09203f 0%, #537895 100%);
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: white;
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* --- CTA BUTTON --- */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: floatBtn 3s ease-in-out infinite;
+        }
+        .btn-download:hover {
+            background: linear-gradient(135deg, #f57c00, #e65100);
+            transform: scale(1.05);
+        }
+
+        /* --- WAVE DIVIDER --- */
+        .custom-shape-divider-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+        .custom-shape-divider-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 120px;
+        }
+        .custom-shape-divider-bottom .shape-fill {
+            fill: #f4f7f6;
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #09203f;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- FEATURE CARDS --- */
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+        /* Staggered animation delays for cards */
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+        .card:nth-child(4) { animation-delay: 0.8s; }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(9, 32, 63, 0.15);
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #09203f, #537895);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .card h3 {
+            font-size: 1.4rem;
+            color: #09203f;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #09203f;
+            color: #a0aec0;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            nav { justify-content: center; padding: 20px; }
+            .custom-shape-divider-bottom svg { height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav>
+        <div class="logo">🛒 Kasir<span>-Q</span></div>
+    </nav>
+
+    <!-- Area Utama (Hero) -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Kelola Bisnis Makin Praktis & Cepat</h1>
+            <p>Tinggalkan cara lama! Catat transaksi, pantau stok, kelola kasbon, dan lihat laporan laba bersih secara real-time. Semua dalam genggaman smartphone Anda.</p>
+            
+            <!-- ========================================== -->
+            <!-- GANTI LINK DI BAWAH INI DENGAN LINK GOOGLE DRIVE -->
+            <!-- ========================================== -->
+            <a href="https://drive.usercontent.google.com/download?id=1orZGftnFW3c-4Gtde2WbEwqoK3lMfNrz&export=download&authuser=2&confirm=t&uuid=bbaae21a-a602-45c8-81a1-786e6a872823&at=AMrWOn1TtIWlPttDu6x0CgbUGuCw:1791943496479" class="btn-download" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download APK Kasir-Q
+            </a>
+        </div>
+
+        <!-- Wave Divider SVG untuk transisi UI yang modern -->
+        <div class="custom-shape-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Area Fitur Unggulan -->
+    <section class="features-section">
+        <h2 class="section-title">Fitur Unggulan Kami</h2>
+        <div class="features-grid">
+            
+            <!-- Kartu 1 -->
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Setup Super Cepat</h3>
+                <p>Panduan 3 langkah praktis untuk mengatur profil toko, pin kasir, dan kategori produk. Langsung siap jualan!</p>
+            </div>
+
+            <!-- Kartu 2 -->
+            <div class="card">
+                <div class="card-icon">📦</div>
+                <h3>Manajemen Produk</h3>
+                <p>Tambah foto dari galeri, atur stok, kategori, hingga generate/scan barcode dengan kamera HP.</p>
+            </div>
+
+            <!-- Kartu 3 -->
+            <div class="card">
+                <div class="card-icon">💳</div>
+                <h3>Transaksi Lengkap</h3>
+                <p>Checkout cepat dalam satu layar. Dukung pembayaran Tunai, QRIS digital, dan pencatatan buku kasbon/hutang.</p>
+            </div>
+
+            <!-- Kartu 4 -->
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Dashboard Keuangan</h3>
+                <p>Pantau omzet real-time, rincian laba kotor/bersih, estimasi aset stok, dan beban biaya operasional toko.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Area Footer -->
+    <footer>
+        <p>&copy; 2026 Kasir-Q. Mendukung Pertumbuhan UMKM Indonesia.</p>
+    </footer>
+
+</body>
+</html>
